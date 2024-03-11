@@ -1,0 +1,4 @@
+git config --global user.name "YourGitHubEmail"
+git add --all
+git commit -m "Your message"
+git push
