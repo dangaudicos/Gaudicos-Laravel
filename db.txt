@@ -1,0 +1,7 @@
+php artisan migrate
+
+
+
+https://tutorial101.blogspot.com/2023/04/laravel-10-custom-login-and-registration.html
+
+heads up(name and id sa input)

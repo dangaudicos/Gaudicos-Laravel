@@ -9,12 +9,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     <!--google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yesteryear&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+
+
+
+
 
     <style>
         #navcon{
@@ -71,7 +81,7 @@
             background-color: #E9967A;
             border-radius: 30px;
         }
-        #title{
+        #title {
             font-family: "Brush Script MT", cursive; 
         }
         .meetda{
@@ -214,10 +224,36 @@
                         <a class="nav-link active" id="navcon" aria-current="page" href="services">Services</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit"><a>Search</a></button>
-                </form>
+                
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                <i class="bi bi-person-check" style="transform: scale(1.3);"></i>   
+                {{ Auth::user()->name }}
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <p class="modal-title" id="exampleModalLabel">{{ Auth::user()->name }} is about to conclude his symphony in silence.</p>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to log out?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" type="submit">Log out</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
             </div>
         </div>
     </nav>
